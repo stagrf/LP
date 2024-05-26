@@ -78,7 +78,8 @@ def trimite_cale_fotografie():
     cale_fotografie = photo_path_var.get()
     if cale_fotografie:
         licence_number = ip.get_licence_number(cale_fotografie)
-        ds.proceseaza_numar(licence_number)
+        licence_number_normalized = ip.remove_non_alphanumeric(licence_number.replace(" ",""))[1:]
+        ds.proceseaza_numar(licence_number_normalized)
         photo_path_var.set("")  # Golește zona de text
 
 # Creare interfață grafică
